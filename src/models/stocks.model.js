@@ -37,6 +37,8 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   stocks.associate = function (models) {
+    stocks.belongsToMany(models.products,{as :'stock' ,through:'ProductStocks',foreignKey: 'stockId'})
+
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
