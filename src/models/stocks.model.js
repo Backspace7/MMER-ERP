@@ -5,10 +5,26 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const product = sequelizeClient.define('product', {
-    text: {
-      type: DataTypes.STRING,
+  const stocks = sequelizeClient.define('stocks', {
+    stock_id: {
+      type: DataTypes.INTEGER,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    count: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    lote_id:{
+      type:DataTypes.INTEGER,
+      allowNull: false
+    },
+    stock_date:{
+      type:DataTypes.DATE,
+      allowNull:true
     }
   }, {
     hooks: {
@@ -19,10 +35,11 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  product.associate = function (models) {
+  stocks.associate = function (models) {
+
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return product;
+  return stocks;
 };

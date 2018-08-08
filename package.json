@@ -38,8 +38,8 @@
     "feathers-sequelize": "^3.1.2",
     "helmet": "^3.13.0",
     "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^4.38.0",
-    "sequelize-cli": "^4.0.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.0.0"
   },
