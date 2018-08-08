@@ -6,8 +6,9 @@ const DataTypes = Sequelize.DataTypes;
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const stocks = sequelizeClient.define('stocks', {
-    stock_id: {
+    stockuid: {
       type: DataTypes.INTEGER,
+      primaryKey : true,
       allowNull: false
     },
     description: {
@@ -36,7 +37,6 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   stocks.associate = function (models) {
-
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };

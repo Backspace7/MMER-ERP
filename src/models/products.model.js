@@ -18,8 +18,9 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    product_id:{
+    produid:{
       type: DataTypes.INTEGER,
+      primaryKey : true,
       allowNull: false
     }
   }, {
@@ -33,7 +34,7 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   products.associate = function (models) {
-    products.belongsToMany(models.stocks,{foreignKey :productId ,targetKey:product_id})
+    products.belongsToMany(models.stocks,{as :'product' ,through:'stocks',foreignKey: 'productId'})
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };

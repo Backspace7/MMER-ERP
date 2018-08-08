@@ -20,7 +20,7 @@ module.exports = function (app) {
 
     // eslint-disable-next-line no-unused-vars
   types.associate = function (models) {
-    types.belongsTo(models.products,{foreignKey:typeID})
+    types.belongsTo(models.products,{foreignKey:'typeID'})
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
