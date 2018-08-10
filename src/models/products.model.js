@@ -10,7 +10,7 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    price: {
+    product_price: {
       type: DataTypes.DOUBLE,
       allowNull: false
     },
@@ -34,7 +34,10 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   products.associate = function (models) {
-    products.belongsToMany(models.stocks,{as :'product' ,through:'ProductStocks',foreignKey: 'productId'})
+    products.hasMany(models.stocks,{foreignKey:'productId'})
+    products.hasMany(models.sales,{foreignKey:'productId'})
+    products.hasMany(models.purchases,{foreignKey:'productId'})
+    products.belongsTo(models.types,{foreignKey:'typeId'})
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };

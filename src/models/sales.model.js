@@ -5,9 +5,17 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const types = sequelizeClient.define('types', {
-    product_type: {
-      type: DataTypes.STRING,
+  const sales = sequelizeClient.define('sales', {
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    sale_price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    count: {
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   }, {
@@ -18,12 +26,12 @@ module.exports = function (app) {
     }
   });
 
-    // eslint-disable-next-line no-unused-vars
-  types.associate = function (models) {
-    types.hasMany(models.products,{foreignKey:'typeId'})
+  // eslint-disable-next-line no-unused-vars
+  sales.associate = function (models) {
+    sales.belongsTo(models.products,{foreignKey:'productId'})
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return types;
+  return sales;
 };

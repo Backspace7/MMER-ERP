@@ -5,8 +5,8 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const types = sequelizeClient.define('types', {
-    product_type: {
+  const inventories = sequelizeClient.define('inventories', {
+    text: {
       type: DataTypes.STRING,
       allowNull: false
     }
@@ -18,12 +18,11 @@ module.exports = function (app) {
     }
   });
 
-    // eslint-disable-next-line no-unused-vars
-  types.associate = function (models) {
-    types.hasMany(models.products,{foreignKey:'typeId'})
+  // eslint-disable-next-line no-unused-vars
+  inventories.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return types;
+  return inventories;
 };

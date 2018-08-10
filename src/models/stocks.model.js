@@ -19,13 +19,9 @@ module.exports = function (app) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    lote_id:{
-      type:DataTypes.INTEGER,
-      allowNull: false
-    },
     stock_date:{
       type:DataTypes.DATE,
-      allowNull:true
+      allowNull:true // En produccion debe ser false
     }
   }, {
     hooks: {
@@ -37,8 +33,7 @@ module.exports = function (app) {
 
   // eslint-disable-next-line no-unused-vars
   stocks.associate = function (models) {
-    stocks.belongsToMany(models.products,{as :'stock' ,through:'ProductStocks',foreignKey: 'stockId'})
-
+    stocks.belongsTo(models.products,{foreignKey:'productId'})
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
